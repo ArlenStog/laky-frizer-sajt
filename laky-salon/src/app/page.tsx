@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Booking from "@/components/Booking";
 import BookServiceButton from "@/components/BookServiceButton";
+import HeroVideo from "@/components/HeroVideo";
 import { commitments, dayNames, salon, services, workingHours } from "@/lib/salon";
 
 const fmt = (m: number) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
@@ -37,13 +38,18 @@ export default function Home() {
       <main id="sadrzaj">
         {/* HERO */}
         <section className="hero">
-          <div className="container hero__grid">
-            <div>
-              <span className="eyebrow">Frizerski studio · {salon.city}</span>
+          <div className="hero__media">
+            <HeroVideo />
+          </div>
+          <div className="hero__content">
+            <div className="container hero__inner">
+              <span className="hero__tag"><span className="hero__dot" />Frizerski studio · {salon.city}</span>
               <h1 className="display">
-                Kosa koja <em>priča</em> vašu priču.
+                <span className="hero__line">
+                  <span>Kosa koja <em>priča</em> vašu priču.</span>
+                </span>
               </h1>
-              <ul className="hero__services">
+              <ul className="hero__services" aria-label="Usluge">
                 <li>Šišanje</li>
                 <li>Feniranje</li>
                 <li>Svečane frizure</li>
@@ -51,17 +57,15 @@ export default function Home() {
                 <li>Tretmani</li>
               </ul>
               <div className="hero__cta">
-                <a href="#zakazivanje" className="btn">Zakaži online</a>
-                <a href="#usluge" className="btn btn--ghost">Cenovnik</a>
+                <a href="#zakazivanje" className="btn btn--bronze">Zakaži online</a>
+                <a href="#usluge" className="btn btn--outline-light">Cenovnik</a>
               </div>
             </div>
-            <div className="hero__visual" aria-hidden="true">
-              <div className="art"><span className="art__label">by Laky</span></div>
-              <div className="art art--2" />
-              <div className="hero__badge">
-                <div><strong>{salon.instagramFollowers}</strong>pratilaca</div>
-              </div>
-            </div>
+          </div>
+          <div className="hero__bar">
+            <a href={salon.instagramUrl} target="_blank" rel="noreferrer">
+              Pratite nas <span>@{salon.instagram}</span> · {salon.instagramFollowers} pratilaca
+            </a>
           </div>
         </section>
 
