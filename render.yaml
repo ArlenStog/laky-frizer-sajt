@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: laky-salon
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: laky-salon
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: ADMIN_PASSWORD
+        sync: false
